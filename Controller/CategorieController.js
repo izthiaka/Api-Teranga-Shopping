@@ -18,12 +18,12 @@ exports.index = function (req, res) {
     });
 };
 
-// Handle create contact actions
+// Handle create categorie actions
 exports.new = function (req, res) {
     var categorie = new Categorie();
-    categorie.nom_categorie = req.body.nom_categorie ? req.body.nom_categorie : contact.nom_categorie;
+    categorie.nom_categorie = req.body.nom_categorie ? req.body.nom_categorie : categorie.nom_categorie;
     categorie.photo_categorie = req.body.photo_categorie;
-// save the contact and check for errors
+    // save the categorie and check for errors
     categorie.save(function (err) {
         // if (err)
         //     res.json(err);
@@ -34,7 +34,7 @@ exports.new = function (req, res) {
     });
 };
 
-// Handle view contact info
+// Handle view categorie info
 exports.view = function (req, res) {
     Categorie.findById(req.params.categorie_id, function (err, categorie) {
         if (err)
@@ -46,14 +46,14 @@ exports.view = function (req, res) {
     });
 };
 
-// Handle update contact info
+// Handle update categorie info
 exports.update = function (req, res) {
 Categorie.findById(req.params.categorie_id, function (err, categorie) {
         if (err)
             res.send(err);
         categorie.nom_categorie = req.body.nom_categorie ? req.body.nom_categorie : categorie.nom_categorie;
         categorie.photo_categorie = req.body.photo_categorie;
-        // save the contact and check for errors
+        // save the categorie and check for errors
         categorie.save(function (err) {
             if (err)
                 res.json(err);
@@ -65,7 +65,7 @@ Categorie.findById(req.params.categorie_id, function (err, categorie) {
     });
 };
 
-// Handle delete contact
+// Handle delete categorie
 exports.delete = function (req, res) {
     Categorie.remove({
         _id: req.params.categorie_id

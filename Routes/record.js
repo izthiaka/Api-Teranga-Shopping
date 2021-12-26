@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
     });
 });
 
-// Import contact controller
+// Import Controller
 var contactController = require('./../Controller/ContactController');
 var categorieController = require('./../Controller/CategorieController');
 
