@@ -13,11 +13,15 @@ const {
 var loginController = require('./../../Controller/Auth/LoginController');
 var registerController = require('./../../Controller/Auth/RegisterController');
 var activationController = require('./../../Controller/Auth/ActivationController');
+var forgetPwdController = require('./../../Controller/Auth/ForgetPasswordController');
+var resetPwdController = require('./../../Controller/Auth/ResetPasswordController');
 
 // Auth routes
 router.post('/register', validRegister, registerController.register);
 router.post('/activation', activationController.activate);
-router.post('/login', validLogin, loginController);
+router.post('/login', validLogin, loginController.login);
+router.put('/password/email', forgetPasswordValidator, forgetPwdController.forget);
+router.put('/password/reset', resetPasswordValidator, resetPwdController.reset);
 
-// Export API routes
+// Export Auth API routes
 module.exports = router;
