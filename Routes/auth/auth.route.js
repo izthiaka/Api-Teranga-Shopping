@@ -19,7 +19,7 @@ var resetPwdController = require('./../../Controller/Auth/ResetPasswordControlle
 // Auth routes
 router.post('/register', validRegister, registerController.register);
 router.post('/activation', activationController.activate);
-router.post('/login', validLogin, loginController.login);
+router.post('/login', validLogin, loginController);
 router.put('/password/email', forgetPasswordValidator, forgetPwdController.forget);
 router.put('/password/reset', resetPasswordValidator, resetPwdController.reset);
 
