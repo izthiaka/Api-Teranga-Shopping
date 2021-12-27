@@ -4,12 +4,30 @@ let express = require('express');
 let bodyParser = require('body-parser');
 // Import Mongoose
 let mongoose = require('mongoose');
+// Import Morgan
+let morgan = require('morgan');
+// Import Morgan
+let cors = require('cors');
 // Initialise the app
 let app = express();
 
+// Config .env to Config/config.env
+require('dotenv').config({
+    path: './Config/config.env'
+})
+
+// Config for only development
+if(process.env.NODE_ENV === 'development'){
+    app.use(cors({
+        origin: process.env.CLIENT_URL
+    }))
+
+    app.use(morgan('dev'))
+}
+
 // Load all routes
 let apiRoutes = require("./Routes/record");
-let authRoutes = require("./Routes/auth/auth.route");
+let authRoutes = require("./Routes/auth/auth");
 
 // Configure bodyparser to handle post requests
 app.use(bodyParser.urlencoded({

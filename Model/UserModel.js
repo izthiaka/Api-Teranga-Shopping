@@ -47,7 +47,7 @@ var userSchema = mongoose.Schema({
 });
 userSchema.set('timestamps', true);
 
-userSchema.virtuel('password')
+userSchema.virtual('password')
     .set(function(password){
         // Set Password note you must use normal function not arrow function
         this.password = password
