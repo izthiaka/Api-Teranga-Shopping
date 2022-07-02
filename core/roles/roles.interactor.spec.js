@@ -25,7 +25,7 @@ describe("the RolesInteractor Class", () => {
                 insertOneRole: jest.fn().mockImplementationOnce((roleName, codeRole) => {
                     return {
                         code_role: `${codeRole}${roleName}`,
-                        name: roleName
+                        role_name: roleName
                     }
                 })
             }
@@ -35,7 +35,7 @@ describe("the RolesInteractor Class", () => {
             expect(mockRepository.insertOneRole).toHaveBeenCalledWith(parameter)
             expect(response).toEqual(expect.objectContaining({
                 code_role: expect.any(String),
-                name: expect.any(String)
+                role_name: expect.any(String)
             }))
         })
         it("should return a good [JSON MESSAGE] when [RoleRepository] throws and error", async () => {

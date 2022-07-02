@@ -19,7 +19,7 @@ describe("the controller for Roles", () => {
             expect(roleController.createRole).toBeDefined()
         })
         it("fails when the name of the role in the body is empty", async () => {
-            let fakeRequest = { body : { name: ""}}
+            let fakeRequest = { body : { role_name: ""}}
 
             let roleController = new RolesController()
             let result = await roleController.createRole(fakeRequest, fakeResponse)
@@ -32,7 +32,7 @@ describe("the controller for Roles", () => {
             )
         })
         it("fails when the name in the request is null", async () => {
-            let fakeRequest = { body : { name: null}}
+            let fakeRequest = { body : { role_name: null}}
             let mockRoleInteractor = {
                 saveOneRole: jest.fn()
             }
@@ -49,7 +49,7 @@ describe("the controller for Roles", () => {
             )
         })
         it("fails when a role with the same name already exist", async () => {
-            let fakeRequest = { body : { name: "administrateur"}}
+            let fakeRequest = { body : { role_name: "administrateur"}}
             let mockRoleInteractor = {
                 saveOneRole: jest.fn(),
                 thisRoleNameAlreadyExist: jest.fn((roleName) => {
@@ -70,7 +70,7 @@ describe("the controller for Roles", () => {
             )
         })
         it("calls the interactor when all the verification have been done", async () => {
-            let fakeRequest = { body : { name: "administrateur"}}
+            let fakeRequest = { body : { role_name: "administrateur"}}
             let mockRoleInteractor = {
                 saveOneRole: jest.fn(),
                 thisRoleNameAlreadyExist: jest.fn((roleName) => {

@@ -16,11 +16,11 @@ class RolesController{
     async createRole(req, res, next){
         try {
             if(req.body !== undefined){
-                if(req.body.name !== undefined && req.body.name !== null && req.body.name.length > 0){
-                    const role_name = req.body.name
+                if(req.body.role_name !== undefined && req.body.role_name !== null && req.body.role_name.length > 0){
+                    const role_name = req.body.role_name
                     const THIS_ROLE_EXIST_DOES_NOT_EXIST = await this._roleInteractor.thisRoleNameAlreadyExist(role_name)
                     if(THIS_ROLE_EXIST_DOES_NOT_EXIST){
-                        const role_name = req.body.name
+                        const role_name = req.body.role_name
                         let response = await this._roleInteractor.saveOneRole(role_name)
                         return res.send(this._helperHttpJson.messageByDefaultSuccessTrueAndWithData("ROLE CREE AVEC SUCCES", response))
                     } else {
