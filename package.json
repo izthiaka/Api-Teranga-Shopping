@@ -4,7 +4,10 @@
   "description": "API Teranga Shopping e-commerce",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test_with_rapport": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
+    "test_only": "jest",
+    "test:watch": "jest --verbose --watchAll",
+    "test:e2e": "jest --watch --config ./test/jest-e2e.json",
     "start": "nodemon index.js"
   },
   "repository": {
