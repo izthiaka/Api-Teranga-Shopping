@@ -1,0 +1,196 @@
+name: "Role"
+description : "Role utilisateur"
+paths:
+  /roles/all:
+    get:
+      summary: Returns a list of roles
+      responses:
+        '200':
+          description: An Array of roles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  success:
+                    type: Boolean
+                    example: true
+                  message:
+                    type: String
+                    example: 'AVEC SUCCES'
+                  data:
+                    type: object
+                    properties:
+                      totalDocs:
+                        type: integer
+                        example: 3
+                      limit:
+                        type: integer
+                        example: 10
+                      totalPages:
+                        type: integer
+                        example: 1
+                      page:
+                        type: integer
+                        example: 1
+                      docs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                              _id:
+                                type: string
+                                example: '6298ec648ccb1e7e4356bdf0'
+                              code_role:
+                                type: string
+                                example: 'hfgjfSUBITOadmi'
+                              role_name:
+                                type: string
+                                example: 'admin'
+
+
+
+
+  /roles/create:
+    post:
+      summary: POST a role
+      description: Permits to create One Role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: String
+                  example: 'administrateur'
+      responses:
+        '200':    # status code
+          description: A JSON acontaining the data of the role just created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  success:
+                    type: Boolean
+                    example: true
+                  message:
+                    type: String
+                    example: 'INSERTION AVEC SUCCESS'
+                  data:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: '6298ec648ccb1e7e4356bdf0'
+                      code_role:
+                        type: string
+                        example: 'hfgjfSUBITOadmi'
+                      role_name:
+                        type: string
+                        example: 'admin'
+
+
+
+
+  /roles/update/{code_role}:
+    put:
+      summary: Update one Role
+      description: permits to update one role by his code
+      parameters:
+        name: code_role
+        in: path
+        required: true
+        description: 'The code of the role we want to update'
+        schema:
+          type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role_name:
+                  type: String
+                  example: 'partenaire'
+      responses:
+        '200':
+          description:  a JSON response with the ROLE just being updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  success:
+                    type: Boolean
+                    example: true
+                  message:
+                    type: String
+                    example: 'INSERTION AVEC SUCCESS'
+                  data:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: '6298ec648ccb1e7e4356bdf0'
+                      code_role:
+                        type: string
+                        example: 'hfgjfSUBITOadmi'
+                      role_name:
+                        type: string
+                        example: 'admin'
+
+
+
+  /roles/get/{code_role}:
+    get:
+      summary: Permits to retrieve one role
+      description: Permits to retrieve one role by hsi code
+      parameters:
+        name: code_role
+        in: path
+        required: true
+        description: 'The code of the role we want to get'
+        schema:
+          type: String
+      responses:
+        '200':
+          description: a JSON response with the role corresponding with the code_role in the URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  success:
+                    type: Boolean
+                    example: true
+                  message:
+                    type: String
+                    example: 'INSERTION AVEC SUCCESS'
+                  data:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: '6298ec648ccb1e7e4356bdf0'
+                      code_role:
+                        type: string
+                        example: 'hfgjfSUBITOadmi'
+                      role_name:
+                        type: string
+                        example: 'admin'
