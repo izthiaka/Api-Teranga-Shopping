@@ -1,4 +1,4 @@
-const RoleRepository = require("../../services/database/schemas/roleSchema").default
+const RoleRepository = require("../../services/Database/schemas/roleSchema").default
 const GenerateRoleCode = require("./helpers/role_code.helper").default
 const RoleModel = require("./model/Role").default
 
