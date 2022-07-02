@@ -1,0 +1,13 @@
+node_modules
+.idea
+# package-lock.json
+
+
+# local files
+.env
+
+# for etsting
+jest-stare
+my_jest_testing_reports
+/node_modules
+./package-lock.json
